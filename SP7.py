@@ -29,7 +29,7 @@ def load_data_rapidapi(ticker, interval="1d", range_="1y"):
     url = "https://yahoo-finance166.p.rapidapi.com/api/stock/get-chart"
     querystring = {"region":"US", "range": range_, "symbol": ticker, "interval": interval}
     headers = {
-        "x-rapidapi-key": "727630e79cmsh457ac61b747d6bfp144dfejsn0d7c69f3883f",   
+        "x-rapidapi-key": st.secrets["rapidapi"]["key"],  
         "x-rapidapi-host": "yahoo-finance166.p.rapidapi.com"
     }
     response = requests.get(url, headers=headers, params=querystring)
@@ -120,4 +120,5 @@ pred_price = scaler_y.inverse_transform(pred_scaled)[0][0]   # ✅ pakai scaler_
 
 st.subheader(f"📌 Prediksi harga {selected_stock} untuk BESOK:")
 st.success(f"{pred_price:.2f}")
+
 
